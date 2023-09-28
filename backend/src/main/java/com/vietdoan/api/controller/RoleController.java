@@ -19,11 +19,17 @@ public class RoleController {
         this.repository = repository;
     }
 
-    @GetMapping("/role")
-    public ResponseEntity<APIResponse> getRoles() {
+    @GetMapping("/api/role")
+    public ResponseEntity<APIResponse<List<Role>>> getRoles() {
         List<Role> roles = repository.findAll();
         return ResponseEntity.ok().body(
-                new APIResponse(HttpStatusCode.Ok, "Ok", roles)
+                APIResponse
+                        .<List<Role>>builder()
+                        .status(HttpStatusCode.Ok)
+                        .message("Ok")
+                        .data(roles)
+                        .build()
+
         );
     }
 }
