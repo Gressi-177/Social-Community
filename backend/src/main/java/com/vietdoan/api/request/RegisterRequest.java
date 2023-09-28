@@ -1,6 +1,5 @@
 package com.vietdoan.api.request;
 
-import com.vietdoan.api.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

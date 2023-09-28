@@ -1,12 +1,12 @@
 package com.vietdoan.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.vietdoan.api.model.User;
+import com.vietdoan.api.dto.user.UserAuthDto;
+import com.vietdoan.api.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 
 @Data
 @Builder
@@ -16,15 +16,9 @@ public class AuthenticationResponse {
     @JsonProperty("access_token")
     private String accessToken;
 
-    @JsonProperty("expiration")
-    private long expiration;
-
     @JsonProperty("refresh_token")
     private String refreshToken;
 
-    @JsonProperty("refresh_expiration")
-    private long refreshExpiration;
-
     @JsonProperty("user")
-    private User user;
+    private UserAuthDto user;
 }

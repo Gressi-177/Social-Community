@@ -1,6 +1,6 @@
 package com.vietdoan.api.repository;
 
-import com.vietdoan.api.model.User;
+import com.vietdoan.api.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
