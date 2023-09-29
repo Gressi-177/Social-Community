@@ -91,6 +91,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                 .buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
+
+
+        }
+        if(username!=null){
+            request.setAttribute("userInfo", this.userDetailsService.loadUserByUsername(username));
         }
 
         filterChain.doFilter(request, response);
