@@ -39,7 +39,16 @@ public class AuthenticationServiceImplement implements AuthenticationService {
                 .date03(new Date(System.currentTimeMillis()))
                 .date04(new Date(System.currentTimeMillis()))
                 .build();
+
+        if (userRepository.existsByUsername(user.getUsername())) {
+            return APIResponse
+                    .builder()
+                    .status(HttpStatusCode.BadRequest)
+                    .message("Tài khoản đã tồn tại")
+                    .build();
+        }
         User savedUser = userRepository.save(user);
+
         var     jwtToken  = jwtService.generateToken(user);
         var  refreshToken      = jwtService.generateRefreshToken(user);
 

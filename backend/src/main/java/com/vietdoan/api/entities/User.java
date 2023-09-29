@@ -44,7 +44,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Column(name = "Username", length = 100)
+    @Column(name = "Username", length = 100, unique = true)
     @JsonProperty("username")
     private String username;
 
