@@ -11,4 +11,6 @@ public interface AuthenticationService {
 
     APIResponse authenticate(AuthenticationRequest request);
 
+    APIResponse refreshToken(String refreshToken);
+
 }

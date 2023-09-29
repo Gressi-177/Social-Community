@@ -93,6 +93,35 @@ public class AuthenticationServiceImplement implements AuthenticationService {
                 .build();
     }
 
+    @Override
+    public APIResponse refreshToken(
+            String refreshToken
+    ) {
+        String userName = jwtService.extractUsername(refreshToken);
+        if (userName != null) {
+            var user = userRepository.findByUsername(userName)
+                    .orElseThrow();
+            if (jwtService.isTokenValid(refreshToken, user)) {
+                String accessToken = jwtService.generateToken(user);
+                var authResponse = AuthenticationResponse.builder()
+                        .accessToken(accessToken)
+                        .refreshToken(refreshToken)
+                        .build();
+
+                return APIResponse
+                        .builder()
+                        .status(HttpStatusCode.Ok)
+                        .data(authResponse)
+                        .build();
+            }
+        }
+        return APIResponse
+                .builder()
+                .status(HttpStatusCode.Unauthorized)
+                .message("Token không hợp lệ")
+                .build();
+    }
+
     private UserAuthDto convertToDto(User user) {
         return modelMapper.map(user, UserAuthDto.class);
     }
