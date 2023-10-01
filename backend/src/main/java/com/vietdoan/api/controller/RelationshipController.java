@@ -4,7 +4,7 @@ import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.response.APIResponse;
 import com.vietdoan.api.response.ErrorResponse;
-import com.vietdoan.api.service.RelationshipService;
+import com.vietdoan.api.service.IRelationshipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +16,12 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class RelationshipController {
-    private final RelationshipService service;
+    private final IRelationshipService service;
 
     @PostMapping("/friends")
     public ResponseEntity doSVLst(@RequestAttribute("userInfo")User user, @RequestBody Map<String, String> json) {
-        List<User> ent = service.reqSVLst(user,json);
-        if (ent == null) {
+        List<User> list = service.reqSVLst(user, json);
+        if (list == null || list.size() == 0) {
             return ResponseEntity.ok(
                     ErrorResponse
                             .builder()
@@ -34,7 +34,7 @@ public class RelationshipController {
                 APIResponse
                         .builder()
                         .status(HttpStatusCode.Ok)
-                        .data(ent)
+                        .data(list)
                         .build()
         );
     }
