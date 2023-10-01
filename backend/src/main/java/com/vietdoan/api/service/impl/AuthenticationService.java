@@ -9,8 +9,8 @@ import com.vietdoan.api.request.AuthenticationRequest;
 import com.vietdoan.api.request.RegisterRequest;
 import com.vietdoan.api.response.APIResponse;
 import com.vietdoan.api.response.AuthenticationResponse;
-import com.vietdoan.api.service.AuthenticationService;
-import com.vietdoan.api.service.JwtService;
+import com.vietdoan.api.service.IAuthenticationService;
+import com.vietdoan.api.service.IJwtService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,10 +22,10 @@ import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticationServiceImplement implements AuthenticationService {
+public class AuthenticationService implements IAuthenticationService {
     private final UserRepository        userRepository;
     private final PasswordEncoder       passwordEncoder;
-    private final JwtService            jwtService;
+    private final IJwtService           jwtService;
     private final AuthenticationManager authenticationManager;
     private final ModelMapper modelMapper;
 

@@ -1,6 +1,6 @@
 package com.vietdoan.api.service.impl;
 
-import com.vietdoan.api.service.JwtService;
+import com.vietdoan.api.service.IJwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -19,7 +19,7 @@ import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
-public class JwtServiceImplement implements JwtService {
+public class JwtService implements IJwtService {
     @Value("${application.security.jwt.secret-key}")
     private String secretKey;
     @Value("${application.security.jwt.expiration}")

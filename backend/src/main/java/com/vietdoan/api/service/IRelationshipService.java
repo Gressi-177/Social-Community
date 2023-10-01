@@ -5,6 +5,6 @@ import com.vietdoan.api.entities.User;
 import java.util.List;
 import java.util.Map;
 
-public interface RelationshipService {
+public interface IRelationshipService {
     public List<User> reqSVLst(User user, Map<String, String> json);
 }
