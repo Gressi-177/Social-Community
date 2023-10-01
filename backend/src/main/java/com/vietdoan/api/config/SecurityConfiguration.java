@@ -1,6 +1,7 @@
 package com.vietdoan.api.config;
 
 import com.vietdoan.api.entities.Role;
+import com.vietdoan.api.exception.AuthException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthFilter;
+    private final AuthException authException;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -30,6 +32,7 @@ public class SecurityConfiguration {
                         .anyRequest()
                         .authenticated()
                 )
+                .exceptionHandling(e->e.authenticationEntryPoint(authException))
                 .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
