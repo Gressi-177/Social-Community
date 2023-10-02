@@ -13,16 +13,41 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/post")
 @RequiredArgsConstructor
 public class PostController {
     private final IPostService postService;
 
-    @GetMapping("/posts")
+    @PostMapping("/add")
+    public ResponseEntity doSvNew(
+            @RequestAttribute("userInfo")User user,
+            @RequestBody Post post
+    ){
+        Post ent = postService.reqNew(user,post);
+
+        if (ent == null) {
+            return ResponseEntity.ok(
+                    ErrorResponse
+                            .builder()
+                            .status(HttpStatusCode.BadRequest)
+                            .message("Thêm bài viết không thành công")
+                            .build()
+            );
+        }
+        return ResponseEntity.ok(
+                APIResponse
+                        .builder()
+                        .status(HttpStatusCode.Ok)
+                        .message("Thêm bài viết thành công")
+                        .data(ent)
+                        .build()
+        );
+    }
+
+    @GetMapping("/list")
     public ResponseEntity doSVLst(
             @RequestAttribute("userInfo")User user,
             @RequestBody Map<String, String> json

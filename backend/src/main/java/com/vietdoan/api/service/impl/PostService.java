@@ -27,4 +27,11 @@ public class PostService implements IPostService {
 
         return postRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Post reqNew(User user, Post post) {
+        Post ent = post;
+        ent.setUser_id(user.getId());
+        return postRepository.save(ent);
+    }
 }

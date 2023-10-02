@@ -9,4 +9,6 @@ import java.util.Map;
 
 public interface IPostService{
     Page<Post> reqSVLst(User user, Map<String, String> json);
+
+    Post reqNew(User user, Post post);
 }
