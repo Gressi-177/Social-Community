@@ -2,15 +2,18 @@ package com.vietdoan.api.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vietdoan.api.entities.Role;
+import com.vietdoan.api.entities.User;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 import java.util.Date;
 
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class UserAuthDto {
 
     @JsonProperty("_id")
@@ -33,4 +36,7 @@ public class UserAuthDto {
     @JsonProperty("updated_at")
     private Date date03;
 
+    public static UserAuthDto convertToDto(User user) {
+        return new ModelMapper().map(user, UserAuthDto.class);
+    }
 }

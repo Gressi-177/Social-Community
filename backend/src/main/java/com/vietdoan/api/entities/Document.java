@@ -13,31 +13,35 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Document {
+
+    public static final  Integer TYPE_DOCUMENT_POST = 1000;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "User")
-    private User user;
+    @Column(name = "user_id")
+    private Long user_id;
 
-    @ManyToOne
-    @JoinColumn(name = "Post")
-    private Post post;
+    @Column(name = "entity_id")
+    private Long entity_id;
 
-    @Column(name = "Type_01")
+    @Column(name = "type_01")
     private Integer type01;
 
-    @Column(name = "Type_02")
+    @Column(name = "type_02")
     private Integer type02;
 
-    @Column(name = "Info", columnDefinition = "TEXT")
-    private String info;
+    @Column(name = "info_01", columnDefinition = "TEXT")
+    private String info_01;
 
-    @Column(name = "Date_01")
+    @Column(name = "info_02", columnDefinition = "TEXT")
+    private String info_02;
+
+    @Column(name = "date_01")
     private Date date01;
 
-    @Column(name = "Date_02")
+    @Column(name = "date_02")
     private Date date02;
 }

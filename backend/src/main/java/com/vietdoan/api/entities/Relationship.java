@@ -19,20 +19,19 @@ public class Relationship {
     public static final int STATUS_ACCEPTED = 1;
     public static final int STATUS_REJECTED = 2;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Long id;
 
-    @ManyToMany
-    @JoinColumn(name = "Id")
-    private Collection<User> user01;
+    @ManyToOne
+    @JoinColumn(name = "user_01")
+    private User user_01;
 
-    @ManyToMany
-    @JoinColumn(name = "Id")
-    private Collection<User> user02;
+    @ManyToOne
+    @JoinColumn(name = "user_02")
+    private User user_02;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private Integer status;
 }
