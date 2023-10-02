@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 
 
 @Data
-@Entity
+//@Entity
 @Table(name = "follow")
 @AllArgsConstructor
 @NoArgsConstructor

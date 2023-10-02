@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Data
-@Entity
+//@Entity
 @Table(name = "notification")
 @AllArgsConstructor
 @NoArgsConstructor

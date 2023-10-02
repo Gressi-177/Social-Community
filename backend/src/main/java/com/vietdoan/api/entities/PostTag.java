@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Data
-@Entity
+//@Entity
 @Table(name = "post_tag")
 @AllArgsConstructor
 @NoArgsConstructor

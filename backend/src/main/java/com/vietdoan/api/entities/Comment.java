@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@Entity
+//@Entity
 @Table(name = "comment")
 @AllArgsConstructor
 @NoArgsConstructor
