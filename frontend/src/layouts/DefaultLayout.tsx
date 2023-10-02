@@ -11,7 +11,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <>
       <Header />
-      <div className='main bg-background p-3 h-screen mt-20' >
+      <div className='main bg-background p-3 h-screen'>
         <NavSidebar />
       </div>
       {children}
