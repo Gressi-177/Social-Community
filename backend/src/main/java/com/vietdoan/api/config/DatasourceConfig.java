@@ -22,7 +22,7 @@ public class DatasourceConfig {
         // DatasourceConfig được khởi tạo
         postRepository.saveAll(IntStream.range(0, 100)
                 .mapToObj(i -> Post.builder()
-                        .content01("name-" + i)
+                        .content_01("name-" + i)
                         .build())
                 .collect(Collectors.toList())
         );
