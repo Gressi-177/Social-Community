@@ -5,8 +5,9 @@ module.exports = {
     extend: { 
       colors: {
         primary: '#212F48', // Màu chính 
-        background: '#212529',
-        secondary: '#2B3B58', // Màu phụ
+        background: '#162134',
+        secondary: '#2B3B58', // Màu phụ ', 
+        textPlaceholder: '#A6ACB6',
       },
     }
   },
