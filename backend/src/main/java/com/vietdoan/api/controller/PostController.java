@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,8 +25,10 @@ public class PostController {
     @PostMapping("/add")
     public ResponseEntity doSvNew(
             @RequestAttribute("userInfo")User user,
-            @RequestBody Post post
+            @RequestBody Post post,
+            @RequestBody String files
     ){
+
         Post ent = postService.reqNew(user,post);
 
         if (ent == null) {
