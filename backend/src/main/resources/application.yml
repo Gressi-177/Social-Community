@@ -15,6 +15,12 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
 
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 800MB
+      max-request-size: 800MB
+
 application:
   security:
     jwt:
