@@ -20,6 +20,7 @@ spring:
       enabled: true
       max-file-size: 800MB
       max-request-size: 800MB
+      resolve-lazily: true
 
 application:
   security:

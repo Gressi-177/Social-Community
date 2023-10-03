@@ -27,6 +27,8 @@ public class AuthenticationService implements IAuthenticationService {
     private final PasswordEncoder       passwordEncoder;
     private final IJwtService           jwtService;
     private final AuthenticationManager authenticationManager;
+    private ModelMapper modelMapper = new ModelMapper();
+
 
     public APIResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -54,7 +56,7 @@ public class AuthenticationService implements IAuthenticationService {
         var authRes = AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
-                .user(UserAuthDto.convertToDto(savedUser))
+                .user(convertToDto(savedUser))
                 .build();
 
         return APIResponse
@@ -81,7 +83,7 @@ public class AuthenticationService implements IAuthenticationService {
         var authRes = AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
-                .user(UserAuthDto.convertToDto(user))
+                .user(convertToDto(user))
                 .build();
 
         return APIResponse
@@ -121,5 +123,7 @@ public class AuthenticationService implements IAuthenticationService {
                 .build();
     }
 
-
+    private UserAuthDto convertToDto(User user) {
+        return modelMapper.map(user, UserAuthDto.class);
+    }
 }

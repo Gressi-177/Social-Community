@@ -1,9 +1,12 @@
 package com.vietdoan.api.controller;
 
+import com.vietdoan.api.dto.user.UserAuthDto;
+import com.vietdoan.api.entities.User;
 import com.vietdoan.api.request.AuthenticationRequest;
 import com.vietdoan.api.request.RegisterRequest;
 import com.vietdoan.api.service.IAuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,5 +39,6 @@ public class AuthenticationController {
     ) {
         return ResponseEntity.ok(service.refreshToken(refreshToken));
     }
+
 
 }

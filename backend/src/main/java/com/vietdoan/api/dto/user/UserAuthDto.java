@@ -14,6 +14,8 @@ import java.util.Date;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserAuthDto {
 
     @JsonProperty("_id")
@@ -36,7 +38,4 @@ public class UserAuthDto {
     @JsonProperty("updated_at")
     private Date date03;
 
-    public static UserAuthDto convertToDto(User user) {
-        return new ModelMapper().map(user, UserAuthDto.class);
-    }
 }
