@@ -18,7 +18,7 @@ function NavSidebar() {
   return (
     <div>
       <div className='bg-primary w-1/4 p-5 rounded-xl h-full overflow-y-auto overflow-x-auto fixed max-h-90vh top-24 left-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent'>
-        <div className='profile border-b pb-5 border-gray-700'>
+        <div className='profile pb-5 border-gray-700  border-b'>
           <div className='relative flex'>
             <div className='pr-2'>
               <span className='notification-badge absolute top-[-4px] left-[-6px] w-4 h-4 bg-green-400 rounded-full flex items-center justify-center font-semibold'></span>
