@@ -1,6 +1,7 @@
 package com.vietdoan.api.controller;
 
 import com.vietdoan.api.constants.HttpStatusCode;
+import com.vietdoan.api.dto.user.PostDto;
 import com.vietdoan.api.entities.Post;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.response.APIResponse;
@@ -27,7 +28,7 @@ public class PostController {
             @RequestBody Post post
     ){
 
-        Post ent = postService.reqNew(user,post);
+        PostDto ent = postService.reqNew(user, post);
 
         if (ent == null) {
             return ResponseEntity.ok(
@@ -54,7 +55,7 @@ public class PostController {
             @RequestParam Integer page,
             @RequestParam Integer limit
             ){
-        Page<Post> rs = postService.reqSVLst(user, page, limit);
+        Page<PostDto> rs = postService.reqSVLst(user, page, limit);
         if (rs == null || rs.isEmpty()) {
             return ResponseEntity.ok(
                     ErrorResponse
@@ -66,10 +67,11 @@ public class PostController {
         }
         PageableResponse pageableResponse = PageableResponse
                 .builder()
-                .page(rs.getNumber())
+                .page(rs.getNumber()+1)
                 .limit(rs.getSize())
                 .pageSize(rs.getTotalPages())
                 .build();
+
         Map<String, Object> data = new HashMap<>();
         data.put("posts", rs.getContent());
         data.put("pagination", pageableResponse);

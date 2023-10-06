@@ -1,8 +1,6 @@
 package com.vietdoan.api.service;
 
-import com.vietdoan.api.entities.Document;
 import com.vietdoan.api.entities.Upload;
-import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;

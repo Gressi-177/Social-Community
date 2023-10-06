@@ -1,7 +1,7 @@
 package com.vietdoan.api.service.impl;
 
 import com.vietdoan.api.constants.HttpStatusCode;
-import com.vietdoan.api.dto.user.UserAuthDto;
+import com.vietdoan.api.dto.user.UserDto;
 import com.vietdoan.api.entities.Role;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.repository.UserRepository;
@@ -26,7 +26,8 @@ public class AuthenticationServiceImpl implements com.vietdoan.api.service.Authe
     private final PasswordEncoder       passwordEncoder;
     private final JwtService            jwtService;
     private final AuthenticationManager authenticationManager;
-    private ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper           modelMapper = new ModelMapper();
+
 
 
     public APIResponse register(RegisterRequest request) {
@@ -55,7 +56,7 @@ public class AuthenticationServiceImpl implements com.vietdoan.api.service.Authe
         var authRes = AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
-                .user(convertToDto(savedUser))
+                .user(modelMapper.map(savedUser, UserDto.class))
                 .build();
 
         return APIResponse
@@ -82,7 +83,7 @@ public class AuthenticationServiceImpl implements com.vietdoan.api.service.Authe
         var authRes = AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
-                .user(convertToDto(user))
+                .user(modelMapper.map(user, UserDto.class))
                 .build();
 
         return APIResponse
@@ -122,7 +123,4 @@ public class AuthenticationServiceImpl implements com.vietdoan.api.service.Authe
                 .build();
     }
 
-    private UserAuthDto convertToDto(User user) {
-        return modelMapper.map(user, UserAuthDto.class);
-    }
 }

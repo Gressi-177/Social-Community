@@ -1,7 +1,6 @@
 package com.vietdoan.api.controller;
 
 import com.vietdoan.api.constants.HttpStatusCode;
-import com.vietdoan.api.entities.Document;
 import com.vietdoan.api.entities.Upload;
 import com.vietdoan.api.response.APIResponse;
 import com.vietdoan.api.service.DocumentService;
@@ -64,23 +63,6 @@ public class DocumentController {
                                     .build()
                     );
         }
-    }
-
-    @GetMapping("/files")
-    public ResponseEntity<List<Document>> getListFiles() {
-        List<Document> fileInfos = documentService.loadAll().map(path -> {
-            String filename = path.getFileName().toString();
-            String url = MvcUriComponentsBuilder
-                    .fromMethodName(DocumentController.class, "getFile", path.getFileName().toString()).build().toString();
-
-            return Document
-                    .builder()
-                    .name(filename)
-                    .url(url)
-                    .build();
-        }).collect(Collectors.toList());
-
-        return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
     }
 
     @GetMapping("/files/{filename:.+}")

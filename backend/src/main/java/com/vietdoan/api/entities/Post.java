@@ -2,6 +2,7 @@ package com.vietdoan.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,10 +36,11 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User user;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private Collection<Document> documents;
+    @Column(name = "imgUrl")
+    private String imgUrl;
 
     @Column(name = "status_01")
     private Integer status_01;
@@ -58,11 +60,11 @@ public class Post {
     @Column(name = "date_01")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date01;
+    private Date date_01;
 
     @Column(name = "date_02")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date02;
+    private Date date_02;
 
 }

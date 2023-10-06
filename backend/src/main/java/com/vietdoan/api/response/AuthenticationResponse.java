@@ -1,8 +1,7 @@
 package com.vietdoan.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.vietdoan.api.dto.user.UserAuthDto;
-import com.vietdoan.api.entities.User;
+import com.vietdoan.api.dto.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,5 +19,5 @@ public class AuthenticationResponse {
     private String refreshToken;
 
     @JsonProperty("user")
-    private UserAuthDto user;
+    private UserDto user;
 }
