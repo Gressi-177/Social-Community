@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -31,18 +32,8 @@ public class PostServiceImpl implements com.vietdoan.api.service.PostService {
 
     @Override
     public Post reqNew(User user, Post post) {
-
-        for (Document item : post.getDocuments()) {
-            Document document = new Document();
-            document.setType01(Document.TYPE_DOCUMENT_POST);
-            document.setInfo_01(item.getInfo_01()); //Name
-            document.setInfo_02(item.getInfo_02()); //URL
-            post.getDocuments().add(document);
-        }
-
+        post.setUser(user);
         Post ent = postRepository.save(post);
-        ent.setUser(user);
-
         return ent;
     }
 }

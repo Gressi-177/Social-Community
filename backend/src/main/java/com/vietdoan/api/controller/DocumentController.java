@@ -75,8 +75,8 @@ public class DocumentController {
 
             return Document
                     .builder()
-                    .info_01(filename)
-                    .info_02(url)
+                    .name(filename)
+                    .url(url)
                     .build();
         }).collect(Collectors.toList());
 

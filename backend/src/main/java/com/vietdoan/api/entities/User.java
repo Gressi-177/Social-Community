@@ -76,7 +76,8 @@ public class User implements UserDetails {
     @JsonProperty("login_at")
     private Date date04;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private Collection<Post> posts;
 
     @Override

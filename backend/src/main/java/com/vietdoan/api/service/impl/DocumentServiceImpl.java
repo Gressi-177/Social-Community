@@ -40,7 +40,7 @@ public class DocumentServiceImpl implements com.vietdoan.api.service.DocumentSer
             Upload ent = Upload
                     .builder()
                     .name(filename)
-                    .urlImage(root + "\\" + filename)
+                    .url(root + "\\" + filename)
                     .build();
 
             return ent;

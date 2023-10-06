@@ -7,5 +7,5 @@ import lombok.Data;
 @Builder
 public class Upload {
     private String name;
-    private String urlImage;
+    private String url;
 }

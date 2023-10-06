@@ -37,7 +37,7 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Collection<Document> documents;
 
     @Column(name = "status_01")
@@ -65,7 +65,4 @@ public class Post {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date02;
 
-
-    @ElementCollection
-    private List<Long> documentIds;
 }
