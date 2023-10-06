@@ -1,4 +1,4 @@
-import { faComment, faEllipsis, faHeart, faHeartCrack, faPaperPlane, faShare } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faEllipsis, faHeart, faPaperPlane, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Post() {
@@ -40,21 +40,21 @@ function Post() {
             <li className=' ml-[-8px]'>
               <img
                 src='https://pixner.net/circlehub/main/assets/images/avatar-2.png'
-                alt='image'
+                alt='reaction'
                 className='rounded-full w-7 h-w-7'
               />
             </li>
             <li className='ml-[-8px]'>
               <img
                 src='https://pixner.net/circlehub/main/assets/images/avatar-3.png'
-                alt='image'
+                alt='reaction'
                 className='rounded-full w-7 h-w-7'
               />
             </li>
             <li className='ml-[-8px]'>
               <img
                 src='https://pixner.net/circlehub/main/assets/images/avatar-4.png'
-                alt='image'
+                alt='reaction'
                 className='rounded-full w-7 h-w-7'
               />
             </li>

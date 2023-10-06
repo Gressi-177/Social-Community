@@ -1,14 +1,11 @@
 import {
-  faBookBookmark,
   faBookmark,
-  faFile,
   faGear,
   faHome,
   faImages,
   faMedal,
   faStore,
   faThumbsUp,
-  faUser,
   faUserGroup,
   faUsers
 } from '@fortawesome/free-solid-svg-icons'
@@ -33,7 +30,7 @@ function NavSidebar() {
         <div className='pt-5 mb-5 border-b border-gray-700'>
           <ul>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -44,7 +41,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -55,7 +52,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -66,7 +63,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -77,7 +74,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -88,7 +85,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -99,7 +96,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -110,7 +107,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -121,7 +118,7 @@ function NavSidebar() {
               </span>
             </a>
             <a
-              href='#'
+              href='https://www.youtube.com/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>

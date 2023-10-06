@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faFileLines, faFilm, faHome, faMessage, faSearch, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faFileLines, faFilm, faHome, faMessage, faUsers } from '@fortawesome/free-solid-svg-icons'
 function Header() {
   return (
     <header className=' p-3 border border-solid bg-primary fixed top-0 right-0 left-0 z-30'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
-          <a href=''>
+          <a href='https://www.youtube.com/'>
             <img src='https://pixner.net/circlehub/main/assets/images/logo.png' alt='logo' />
           </a>
           {/* <div className='ml-4 relative bg-secondary rounded-lg flex items-center'>
@@ -20,22 +20,22 @@ function Header() {
         <nav className='flex justify-center items-center'>
           <ul className='flex'>
             <li>
-              <a href='#' className='text-white px-10'>
+              <a href='https://www.youtube.com/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faHome} className='text-2xl' />
               </a>
             </li>
             <li>
-              <a href='#' className='text-white px-10'>
+              <a href='https://www.youtube.com/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faFileLines} className='text-2xl' />
               </a>
             </li>
             <li>
-              <a href='#' className='text-white px-10'>
+              <a href='https://www.youtube.com/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faUsers} className='text-2xl' />
               </a>
             </li>
             <li>
-              <a href='#' className='text-white px-10'>
+              <a href='https://www.youtube.com/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faFilm} className='text-2xl' />
               </a>
             </li>

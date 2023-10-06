@@ -19,6 +19,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
         <main className='bg-gray-200 w-1/2 mt-20 mx-5'>
           <WritePost />
           <Post />
+          <Post />
         </main>
       </div>
       {children}
