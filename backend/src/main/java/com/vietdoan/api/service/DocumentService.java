@@ -1,18 +1,20 @@
 package com.vietdoan.api.service;
 
 import com.vietdoan.api.entities.Document;
+import com.vietdoan.api.entities.Upload;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-public interface IDocumentService {
+public interface DocumentService {
     public void init();
 
-    public Document save(MultipartFile file);
+    public Upload save(MultipartFile file);
 
-    public Resource load(String filename);
+    public Path load(String filename);
 
     public void deleteAll();
 

@@ -1,12 +1,9 @@
 package com.vietdoan.api.controller;
 
-import com.vietdoan.api.dto.user.UserAuthDto;
-import com.vietdoan.api.entities.User;
 import com.vietdoan.api.request.AuthenticationRequest;
 import com.vietdoan.api.request.RegisterRequest;
-import com.vietdoan.api.service.IAuthenticationService;
+import com.vietdoan.api.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-    private final IAuthenticationService service;
+    private final AuthenticationService service;
 
     @PostMapping("/register")
     public ResponseEntity register(

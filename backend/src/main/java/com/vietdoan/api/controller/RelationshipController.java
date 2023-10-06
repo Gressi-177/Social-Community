@@ -4,7 +4,7 @@ import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.response.APIResponse;
 import com.vietdoan.api.response.ErrorResponse;
-import com.vietdoan.api.service.IRelationshipService;
+import com.vietdoan.api.service.RelationshipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class RelationshipController {
-    private final IRelationshipService service;
+    private final RelationshipService service;
 
     @PostMapping("/friends")
     public ResponseEntity doSVLst(@RequestAttribute("userInfo")User user, @RequestBody Map<String, String> json) {

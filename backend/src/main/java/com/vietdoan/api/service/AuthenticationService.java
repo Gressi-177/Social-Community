@@ -5,7 +5,7 @@ import com.vietdoan.api.request.AuthenticationRequest;
 import com.vietdoan.api.request.RegisterRequest;
 import com.vietdoan.api.response.APIResponse;
 
-public interface IAuthenticationService {
+public interface AuthenticationService {
 
     APIResponse register(RegisterRequest request);
 

@@ -76,6 +76,9 @@ public class User implements UserDetails {
     @JsonProperty("login_at")
     private Date date04;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Collection<Post> posts;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

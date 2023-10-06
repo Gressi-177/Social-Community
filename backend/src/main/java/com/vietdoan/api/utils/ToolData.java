@@ -11,4 +11,11 @@ public class ToolData {
         }
         return valDef;
     }
+
+    public static String reqStr(Map<String, String> json, String col, String valDef) {
+        if (json.get(col) != null)
+            return json.get(col).toString();
+
+        return valDef;
+    }
 }

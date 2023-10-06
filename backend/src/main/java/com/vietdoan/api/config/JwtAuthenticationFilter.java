@@ -2,7 +2,7 @@ package com.vietdoan.api.config;
 
 import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.response.APIResponse;
-import com.vietdoan.api.service.IJwtService;
+import com.vietdoan.api.service.JwtService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
     private  final UserDetailsService userDetailsService;
-    private final  IJwtService        jwtService;
+    private final  JwtService         jwtService;
 
     @Override
     protected void doFilterInternal(

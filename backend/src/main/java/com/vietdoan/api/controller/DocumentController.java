@@ -2,41 +2,46 @@ package com.vietdoan.api.controller;
 
 import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.entities.Document;
-import com.vietdoan.api.entities.User;
+import com.vietdoan.api.entities.Upload;
 import com.vietdoan.api.response.APIResponse;
-import com.vietdoan.api.service.IDocumentService;
+import com.vietdoan.api.service.DocumentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/api/v1")
 public class DocumentController {
 
-    final IDocumentService documentService;
+    final DocumentService documentService;
 
     @PostMapping("/upload")
     public ResponseEntity<APIResponse> uploadFiles(
-            @RequestAttribute("userInfo") User user,
             @RequestParam("files") MultipartFile[] files) {
         try {
-            List<Document> documents = new ArrayList<>();
+            Collection<Upload> rs = new ArrayList<>();
 
             Arrays.asList(files).stream().forEach(file -> {
-                Document document = documentService.save(file);
-                document.setUser_id(user.getId());
-                documents.add(document);
+                Upload ent = documentService.save(file);
+                rs.add(ent);
             });
 
             return ResponseEntity
@@ -46,7 +51,7 @@ public class DocumentController {
                                     .builder()
                                     .status(HttpStatusCode.Ok)
                                     .message("Upload ảnh thành công")
-                                    .data(documents)
+                                    .data(rs)
                                     .build()
                     );
         } catch (Exception e) {
@@ -80,8 +85,12 @@ public class DocumentController {
 
     @GetMapping("/files/{filename:.+}")
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
-        Resource file = documentService.load(filename);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+        Path     filePath = documentService.load(filename);
+        Resource resource = new FileSystemResource(filePath);
+        if (resource.exists()) {
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
+        }
+        return ResponseEntity.notFound().build();
+
     }
 }

@@ -24,11 +24,9 @@ public class Document {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id")
-    private Long user_id;
-
-    @Column(name = "entity_id")
-    private Long entity_id;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 
     @Column(name = "type_01")
     private Integer type01;

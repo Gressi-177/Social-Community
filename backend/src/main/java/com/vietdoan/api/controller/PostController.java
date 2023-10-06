@@ -6,13 +6,12 @@ import com.vietdoan.api.entities.User;
 import com.vietdoan.api.response.APIResponse;
 import com.vietdoan.api.response.ErrorResponse;
 import com.vietdoan.api.response.PageableResponse;
-import com.vietdoan.api.service.IPostService;
+import com.vietdoan.api.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,13 +19,12 @@ import java.util.Map;
 @RequestMapping("/api/v1/post")
 @RequiredArgsConstructor
 public class PostController {
-    private final IPostService postService;
+    private final PostService postService;
 
     @PostMapping("/add")
     public ResponseEntity doSvNew(
             @RequestAttribute("userInfo")User user,
-            @RequestBody Post post,
-            @RequestBody String files
+            @RequestBody Post post
     ){
 
         Post ent = postService.reqNew(user,post);
@@ -53,9 +51,10 @@ public class PostController {
     @GetMapping("/list")
     public ResponseEntity doSVLst(
             @RequestAttribute("userInfo")User user,
-            @RequestBody Map<String, String> json
+            @RequestParam Integer page,
+            @RequestParam Integer limit
             ){
-        Page<Post> rs = postService.reqSVLst(user, json);
+        Page<Post> rs = postService.reqSVLst(user, page, limit);
         if (rs == null || rs.isEmpty()) {
             return ResponseEntity.ok(
                     ErrorResponse

@@ -1,6 +1,7 @@
 package com.vietdoan.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import jakarta.persistence.*;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,8 +33,12 @@ public class Post {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id")
-    private Long user_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "")
+    private Collection<Document> documents;
 
     @Column(name = "status_01")
     private Integer status_01;
@@ -58,4 +64,8 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date02;
+
+
+    @ElementCollection
+    private List<Long> documentIds;
 }
