@@ -1,7 +1,19 @@
 import { faComment, faEllipsis, faHeart, faPaperPlane, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function Post() {
+interface PostProps {
+  profileImage: string
+  name: string
+  username: string
+  postContent: string
+  postImage: string
+  commentCount: number
+  shareCount: number
+}
+
+function Post(props: PostProps) {
+  const { profileImage, name, username, postContent, postImage, commentCount, shareCount } = props
+
   return (
     <div className='p-4 bg-secondary rounded-xl mt-6'>
       <div className='profile flex justify-between items-center mb-4'>
@@ -9,11 +21,11 @@ function Post() {
           <div className='relative flex'>
             <div className='pr-2'>
               <span className='notification-badge absolute top-[-4px] left-[-6px] w-4 h-4 bg-green-400 rounded-full flex items-center justify-center font-semibold'></span>
-              <img src='https://pixner.net/circlehub/main/assets/images/avatar-1.png' alt='' />
+              <img src={profileImage} alt='' />
             </div>
             <div className='flex flex-col justify-between'>
-              <h3 className='font-bold text-white text-lg'>Bao Linh</h3>
-              <p className='font-medium text-white text-sm'>@baolinhdev</p>
+              <h3 className='font-bold text-white text-lg'>{name}</h3>
+              <p className='font-medium text-white text-sm'>{username}</p>
             </div>
           </div>
         </div>
@@ -22,17 +34,10 @@ function Post() {
         </div>
       </div>
       <div className='text'>
-        <p className='text-white font-medium text-lg'>
-          I created Roughly plugin to sketch crafted hand-drawn elements which can be used to any usage
-          (diagrams/flows/decoration/etc)
-        </p>
+        <p className='text-white font-medium text-lg'>{postContent}</p>
       </div>
       <div className='image'>
-        <img
-          src='https://pixner.net/circlehub/main/assets/images/post-img-1.png'
-          alt='post-img'
-          className='rounded-xl'
-        />
+        <img src={postImage} alt='post-img' className='rounded-xl' />
       </div>
       <div className='reaction flex justify-between items-center border-gray-700  border-b'>
         <div className='reaction-image py-4'>
@@ -67,8 +72,8 @@ function Post() {
         </div>
         <div className='reaction-quantity'>
           <div className='react-list d-flex flex-wrap gap-6 align-items-center text-center my-2'>
-            <button className='text-textPlaceholder mr-2'>4 Comments</button>
-            <button className='text-textPlaceholder mr-2'>1 Shares</button>
+            <button className='text-textPlaceholder mr-2'>{commentCount} Comments</button>
+            <button className='text-textPlaceholder mr-2'>{shareCount} Shares</button>
           </div>
         </div>
       </div>

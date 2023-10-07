@@ -8,14 +8,6 @@ function Header() {
           <a href='https://www.youtube.com/'>
             <img src='https://pixner.net/circlehub/main/assets/images/logo.png' alt='logo' />
           </a>
-          {/* <div className='ml-4 relative bg-secondary rounded-lg flex items-center'>
-            <div className='w-6'></div>
-            <FontAwesomeIcon
-              icon={faSearch}
-              className='search-icon absolute top-1/2 left-3 transform -translate-y-1/2 text-white'
-            />
-            <input type='text' placeholder='Search Circlehubtio' className='bg-transparent p-4 pr-12 font-normal opacity-80 text-base' />
-          </div> */}
         </div>
         <nav className='flex justify-center items-center'>
           <ul className='flex'>
