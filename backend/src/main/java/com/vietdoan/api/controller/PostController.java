@@ -52,10 +52,11 @@ public class PostController {
     @GetMapping("/list")
     public ResponseEntity doSVLst(
             @RequestAttribute("userInfo")User user,
-            @RequestParam Integer page,
-            @RequestParam Integer limit
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "date01") String sortBy
             ){
-        Page<PostDto> rs = postService.reqSVLst(user, page, limit);
+        Page<PostDto> rs = postService.reqSVLst(user, pageNo, pageSize, sortBy);
         if (rs == null || rs.isEmpty()) {
             return ResponseEntity.ok(
                     ErrorResponse

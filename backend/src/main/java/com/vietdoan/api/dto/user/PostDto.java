@@ -1,6 +1,7 @@
 package com.vietdoan.api.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,18 +15,19 @@ import java.util.Date;
 @Builder
 public class PostDto {
     private Long id;
-
     private UserDto user;
     private String imgUrl;
-    private Integer status_01;
-    private Integer status_02;
-    private String content_01;
-    private String content_02;
-    private String content_03;
+    private Integer status01;
+    private Integer status02;
+    private String content01;
+    private String content02;
+    private String content03;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date_01;
+    @JsonProperty("createdAt")
+    private Date date01;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date_02;
+    @JsonProperty("updatedAt")
+    private Date date02;
 }

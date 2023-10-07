@@ -1,18 +1,14 @@
 package com.vietdoan.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
-
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -43,28 +39,39 @@ public class Post {
     private String imgUrl;
 
     @Column(name = "status_01")
-    private Integer status_01;
+    private Integer status01;
 
     @Column(name = "status_02")
-    private Integer status_02;
+    private Integer status02;
 
     @Column(name = "content_01", columnDefinition = "TEXT")
-    private String content_01;
+    private String content01;
 
     @Column(name = "content_02", columnDefinition = "TEXT")
-    private String content_02;
+    private String content02;
 
     @Column(name = "content_03", columnDefinition = "TEXT")
-    private String content_03;
+    private String content03;
 
     @Column(name = "date_01")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date_01;
+    private Date date01;
 
     @Column(name = "date_02")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date_02;
+    private Date date02;
+
+    @PrePersist
+    protected void prePersist() {
+        this.date01 = new Date(System.currentTimeMillis());
+        this.date02 = new Date(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.date02 = new Date(System.currentTimeMillis());
+    }
 
 }

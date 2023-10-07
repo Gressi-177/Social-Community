@@ -8,11 +8,10 @@ import com.vietdoan.api.repository.PostRepository;
 import com.vietdoan.api.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,19 +23,19 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public Page<PostDto> reqSVLst(User user, Integer page, Integer limit) {
-        page--;
-        if (page<0)
-            page = 0;
-        PageRequest pageRequest = PageRequest.of(page - 1, limit);
+    public Page<PostDto> reqSVLst(User user, Integer pageNo, Integer pageSize, String sortBy) {
+        pageNo = pageNo <= 0 ? 0 : pageNo - 1; // Đảm bảo pageNo không âm
 
-        Page<Post> posts = postRepository.findAll(pageRequest);
-        List<PostDto> postDtos = posts.getContent()
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.DESC, sortBy));
+
+        Page<Post> pagedResult = postRepository.findPostsByUserId(user.getId(), paging);
+
+        List<PostDto> postDtos = pagedResult.getContent()
                 .stream()
                 .map(post -> modelMapper.map(post, PostDto.class))
                 .collect(Collectors.toList());
 
-        return new PageImpl<>(postDtos, pageRequest, posts.getTotalElements());
+        return new PageImpl<>(postDtos, paging, pagedResult.getTotalElements());
     }
 
     @Override

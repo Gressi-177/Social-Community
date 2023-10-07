@@ -6,7 +6,7 @@ import com.vietdoan.api.entities.User;
 import org.springframework.data.domain.Page;
 
 public interface PostService {
-    Page<PostDto> reqSVLst(User user, Integer page, Integer limit);
+    Page<PostDto> reqSVLst(User user,Integer pageNo, Integer pageSize, String sortBy);
     PostDto reqNew(User user, Post post);
 
 }
