@@ -1,6 +1,6 @@
-import { faComment, faEllipsis, faHeart, faPaperPlane, faShare } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faEllipsis, faFile, faHeart, faPaperPlane, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { useDropzone } from 'react-dropzone'
 interface PostProps {
   profileImage: string
   name: string
@@ -12,6 +12,7 @@ interface PostProps {
 }
 
 function Post(props: PostProps) {
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
   const { profileImage, name, username, postContent, postImage, commentCount, shareCount } = props
 
   return (
@@ -77,7 +78,7 @@ function Post(props: PostProps) {
           </div>
         </div>
       </div>
-      <div className='reaction-btns pt-4'>
+      <div className='reaction-btns py-4 border-gray-700  border-b'>
         <div className='flex justify-between items-center'>
           <button className=''>
             <FontAwesomeIcon icon={faHeart} className='mr-2 text-xl text-white' />
@@ -94,18 +95,22 @@ function Post(props: PostProps) {
         </div>
       </div>
       <div className='write-comment mt-4'>
-        <form action='#' className='flex justify-between items-center'>
-          <div className='flex w-[90%]'>
-            <input type='text' placeholder='Write a comment...' />
-            <input type='file' />
-            <input type='file' />
+        <form action='#' className='flex justify-between items-center '>
+          <div className='flex w-[85%]'>
+            <div className='relative w-full flex items-center'>
+              <input type='text' placeholder='Write a comment...' className='w-full bg-slate-800 p-3 opacity-80 rounded-xl'/>
+              <div {...getRootProps()} className='file-input absolute top-0 right-0 inline-block cursor-pointer flex items-center h-full mr-4'>
+                <input {...getInputProps()} />
+                <FontAwesomeIcon icon={faFile} className='file-icon w-6 h-6 text-white' />
+              </div>
+            </div>
           </div>
-
-          <div className='btn-area d-flex w-[10%]'>
-            <button className='cmn-btn px-2 px-sm-5 px-lg-6'>
-              <FontAwesomeIcon icon={faPaperPlane} />
+          <div className='btn-area d-flex w-[10%] mx-[8px]'>
+            <button className='cmn-btn px-2 px-sm-5 px-lg-6 bg-primaryButton p-3 rounded-xl min-w-[60px]'>
+              <FontAwesomeIcon icon={faPaperPlane} className='file-icon w-6 h-6 text-white'/>
             </button>
           </div>
+
         </form>
       </div>
     </div>
