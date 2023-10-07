@@ -1,35 +1,36 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faFileLines, faFilm, faHome, faMessage, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 function Header() {
   return (
     <header className=' p-3 border border-solid bg-primary fixed top-0 right-0 left-0 z-30'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
-          <a href='https://www.youtube.com/'>
+          <Link to='/'>
             <img src='https://pixner.net/circlehub/main/assets/images/logo.png' alt='logo' />
-          </a>
+          </Link>
         </div>
         <nav className='flex justify-center items-center'>
           <ul className='flex'>
             <li>
-              <a href='https://www.youtube.com/' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faHome} className='text-2xl' />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='https://www.youtube.com/' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faFileLines} className='text-2xl' />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='https://www.youtube.com/' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faUsers} className='text-2xl' />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='https://www.youtube.com/' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faFilm} className='text-2xl' />
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

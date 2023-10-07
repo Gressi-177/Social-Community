@@ -10,6 +10,7 @@ import {
   faUsers
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
 function NavSidebar() {
   return (
@@ -29,8 +30,8 @@ function NavSidebar() {
         </div>
         <div className='pt-5 mb-5 border-b border-gray-700'>
           <ul>
-            <a
-              href='https://www.youtube.com/'
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -39,9 +40,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Home</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -50,9 +51,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>People</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -61,9 +62,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Event</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -72,9 +73,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Pages</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -83,9 +84,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Group</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -94,9 +95,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Marketplace</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -105,9 +106,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Saved</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -116,9 +117,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Favorites</h4>
               </span>
-            </a>
-            <a
-              href='https://www.youtube.com/'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -127,7 +128,7 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Settings</h4>
               </span>
-            </a>
+            </Link>
           </ul>
         </div>
         <div>

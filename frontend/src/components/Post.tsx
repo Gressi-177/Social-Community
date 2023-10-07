@@ -36,7 +36,7 @@ function Post(props: PostProps) {
       <div className='text'>
         <p className='text-white font-medium text-lg'>{postContent}</p>
       </div>
-      <div className='image'>
+      <div className='image mt-3'>
         <img src={postImage} alt='post-img' className='rounded-xl' />
       </div>
       <div className='reaction flex justify-between items-center border-gray-700  border-b'>

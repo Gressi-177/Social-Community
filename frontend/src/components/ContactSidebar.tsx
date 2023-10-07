@@ -1,15 +1,4 @@
-import {
-  faBookmark,
-  faEllipsis,
-  faGear,
-  faHome,
-  faImages,
-  faMedal,
-  faStore,
-  faThumbsUp,
-  faUserGroup,
-  faUsers
-} from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function ContactSidebar() {

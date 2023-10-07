@@ -1,9 +1,6 @@
 import { ReactNode } from 'react'
 import Header from 'components/Header'
-import Footer from 'components/Footer'
 import NavSidebar from 'components/NavSidebar'
-import WritePost from 'components/WritePost'
-import Post from 'components/Post'
 import ContactSidebar from 'components/ContactSidebar'
 
 interface DefaultLayoutProps {
@@ -18,7 +15,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
         <NavSidebar />
         <div className='w-1/4'></div>
 
-      {children}
+        {children}
         <ContactSidebar />
       </div>
     </>
