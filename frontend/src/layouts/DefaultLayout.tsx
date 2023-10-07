@@ -14,7 +14,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <>
       <Header />
-      <div className=' bg-background p-3 h-screen flex'>
+      <div className=' p-3 flex'>
         <NavSidebar />
         <div className='w-1/4'></div>
 
