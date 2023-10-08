@@ -1,39 +1,37 @@
 import {
-  faBookBookmark,
   faBookmark,
-  faFile,
   faGear,
   faHome,
   faImages,
   faMedal,
   faStore,
   faThumbsUp,
-  faUser,
   faUserGroup,
   faUsers
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
 function NavSidebar() {
   return (
     <div>
       <div className='bg-primary w-1/4 p-5 rounded-xl h-full overflow-y-auto overflow-x-auto fixed max-h-90vh top-24 left-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent'>
-        <div className='profile border-b pb-5 border-gray-700'>
+        <div className='profile pb-5 border-gray-700  border-b'>
           <div className='relative flex'>
             <div className='pr-2'>
               <span className='notification-badge absolute top-[-4px] left-[-6px] w-4 h-4 bg-green-400 rounded-full flex items-center justify-center font-semibold'></span>
               <img src='https://pixner.net/circlehub/main/assets/images/avatar-1.png' alt='' />
             </div>
             <div className='flex flex-col justify-between'>
-              <h3 className='font-bold text-white text-lg'>Bao Linh</h3>
+              <h3 className='font-semiboldbold text-white text-lg'>Bao Linh</h3>
               <p className='font-medium text-white text-sm'>@baolinhdev</p>
             </div>
           </div>
         </div>
         <div className='pt-5 mb-5 border-b border-gray-700'>
           <ul>
-            <a
-              href='#'
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -42,9 +40,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Home</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -53,9 +51,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>People</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -64,9 +62,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Event</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -75,9 +73,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Pages</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -86,9 +84,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Group</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -97,9 +95,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Marketplace</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -108,9 +106,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Saved</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -119,9 +117,9 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Favorites</h4>
               </span>
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              to='/'
               className='flex items-center mb-6 text-white hover:text-blue-500 transition-colors duration-100'
             >
               <span className='w-10'>
@@ -130,7 +128,7 @@ function NavSidebar() {
               <span className='font-semibold'>
                 <h4>Settings</h4>
               </span>
-            </a>
+            </Link>
           </ul>
         </div>
         <div>

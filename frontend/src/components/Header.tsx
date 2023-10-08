@@ -1,43 +1,36 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faFileLines, faFilm, faHome, faMessage, faSearch, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faFileLines, faFilm, faHome, faMessage, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 function Header() {
   return (
     <header className=' p-3 border border-solid bg-primary fixed top-0 right-0 left-0 z-30'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
-          <a href=''>
+          <Link to='/'>
             <img src='https://pixner.net/circlehub/main/assets/images/logo.png' alt='logo' />
-          </a>
-          {/* <div className='ml-4 relative bg-secondary rounded-lg flex items-center'>
-            <div className='w-6'></div>
-            <FontAwesomeIcon
-              icon={faSearch}
-              className='search-icon absolute top-1/2 left-3 transform -translate-y-1/2 text-white'
-            />
-            <input type='text' placeholder='Search Circlehubtio' className='bg-transparent p-4 pr-12 font-normal opacity-80 text-base' />
-          </div> */}
+          </Link>
         </div>
         <nav className='flex justify-center items-center'>
           <ul className='flex'>
             <li>
-              <a href='#' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faHome} className='text-2xl' />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='#' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faFileLines} className='text-2xl' />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='#' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faUsers} className='text-2xl' />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='#' className='text-white px-10'>
+              <Link to='/' className='text-white px-10'>
                 <FontAwesomeIcon icon={faFilm} className='text-2xl' />
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
