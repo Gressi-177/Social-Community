@@ -23,7 +23,7 @@ function NavSidebar() {
               <img src='https://pixner.net/circlehub/main/assets/images/avatar-1.png' alt='' />
             </div>
             <div className='flex flex-col justify-between'>
-              <h3 className='font-semiboldbold text-white text-lg'>Bao Linh</h3>
+              <h3 className='font-semibold text-white text-lg'>Bao Linh</h3>
               <p className='font-medium text-white text-sm'>@baolinhdev</p>
             </div>
           </div>

@@ -12,7 +12,7 @@ interface PostProps {
 }
 
 function Post(props: PostProps) {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
+  const { getRootProps, getInputProps } = useDropzone()
   const { profileImage, name, username, postContent, postImage, commentCount, shareCount } = props
 
   return (
@@ -98,8 +98,15 @@ function Post(props: PostProps) {
         <form action='#' className='flex justify-between items-center '>
           <div className='flex w-[85%]'>
             <div className='relative w-full flex items-center'>
-              <input type='text' placeholder='Write a comment...' className='w-full bg-slate-800 p-3 opacity-80 rounded-xl'/>
-              <div {...getRootProps()} className='file-input absolute top-0 right-0 inline-block cursor-pointer flex items-center h-full mr-4'>
+              <input
+                type='text'
+                placeholder='Write a comment...'
+                className='w-full bg-slate-800 p-3 opacity-80 rounded-xl'
+              />
+              <div
+                {...getRootProps()}
+                className='file-input absolute top-0 right-0 inline-block cursor-pointer flex items-center h-full mr-4'
+              >
                 <input {...getInputProps()} />
                 <FontAwesomeIcon icon={faFile} className='file-icon w-6 h-6 text-white' />
               </div>
@@ -107,10 +114,9 @@ function Post(props: PostProps) {
           </div>
           <div className='btn-area d-flex w-[10%] mx-[8px]'>
             <button className='cmn-btn px-2 px-sm-5 px-lg-6 bg-primaryButton p-3 rounded-xl min-w-[60px]'>
-              <FontAwesomeIcon icon={faPaperPlane} className='file-icon w-6 h-6 text-white'/>
+              <FontAwesomeIcon icon={faPaperPlane} className='file-icon w-6 h-6 text-white' />
             </button>
           </div>
-
         </form>
       </div>
     </div>
