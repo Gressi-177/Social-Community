@@ -81,7 +81,7 @@ public class PostController {
                         .success
                                 (
                                         HttpStatusCode.Ok,
-                                        SuccessMessage.ADD_SUCCESS.getMessage(),
+                                        SuccessMessage.GET_SUCCESS.getMessage(),
                                         ent
                                 )
         );
