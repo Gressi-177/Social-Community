@@ -1,11 +1,13 @@
 package com.vietdoan.api.controller;
 
+import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.constants.HttpStatusCode;
+import com.vietdoan.api.constants.SuccessMessage;
 import com.vietdoan.api.dto.user.PostDto;
 import com.vietdoan.api.entities.Post;
 import com.vietdoan.api.entities.User;
-import com.vietdoan.api.response.APIResponse;
-import com.vietdoan.api.response.ErrorResponse;
+import com.vietdoan.api.exception.NotFoundException;
+import com.vietdoan.api.response.ApiResponse;
 import com.vietdoan.api.response.PageableResponse;
 import com.vietdoan.api.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/add")
-    public ResponseEntity doSvNew(
+    public ResponseEntity<ApiResponse> doSvNew(
             @RequestAttribute("userInfo")User user,
             @RequestBody Post post
     ){
@@ -31,26 +33,21 @@ public class PostController {
         PostDto ent = postService.reqNew(user, post);
 
         if (ent == null) {
-            return ResponseEntity.ok(
-                    ErrorResponse
-                            .builder()
-                            .status(HttpStatusCode.BadRequest)
-                            .message("Thêm bài viết không thành công")
-                            .build()
-            );
+            throw new NotFoundException(ErrorMessage.UPLOAD_FAILED.getMessage());
         }
         return ResponseEntity.ok(
-                APIResponse
-                        .builder()
-                        .status(HttpStatusCode.Ok)
-                        .message("Thêm bài viết thành công")
-                        .data(ent)
-                        .build()
+                ApiResponse
+                        .success
+                                (
+                                        HttpStatusCode.Ok,
+                                        SuccessMessage.ADD_SUCCESS.getMessage(),
+                                        ent
+                                )
         );
     }
 
     @GetMapping("/list")
-    public ResponseEntity doSVLst(
+    public ResponseEntity<ApiResponse> doSVLst(
             @RequestAttribute("userInfo")User user,
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
@@ -58,13 +55,7 @@ public class PostController {
             ){
         Page<PostDto> rs = postService.reqSVLst(user, pageNo, pageSize, sortBy);
         if (rs == null || rs.isEmpty()) {
-            return ResponseEntity.ok(
-                    ErrorResponse
-                            .builder()
-                            .status(HttpStatusCode.BadRequest)
-                            .message("Lấy danh sách bài viết không thành công")
-                            .build()
-            );
+            throw new NotFoundException(ErrorMessage.GET_LIST_FAILED.getMessage());
         }
         PageableResponse pageableResponse = PageableResponse
                 .builder()
@@ -77,15 +68,8 @@ public class PostController {
         data.put("posts", rs.getContent());
         data.put("pagination", pageableResponse);
 
-
-
         return ResponseEntity.ok(
-                APIResponse
-                        .builder()
-                        .status(HttpStatusCode.Ok)
-                        .message("Lấy danh sách bài viết thành công")
-                        .data(data)
-                        .build()
+                ApiResponse.success(HttpStatusCode.Ok, SuccessMessage.GET_LIST_SUCCESS.getMessage(), data)
         );
     }
 

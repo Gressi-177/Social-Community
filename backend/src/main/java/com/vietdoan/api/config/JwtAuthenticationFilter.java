@@ -1,13 +1,14 @@
 package com.vietdoan.api.config;
 
+import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.constants.HttpStatusCode;
-import com.vietdoan.api.response.APIResponse;
 import com.vietdoan.api.service.JwtService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.UnavailableException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -58,18 +59,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
 
             if(username==null){
-                try{
-                    ResponseEntity
-                            .badRequest()
-                            .body(
-                                    APIResponse
-                                    .builder()
-                                    .status(HttpStatusCode.Unauthorized)
-                                    .message("Unauthorized")
-                                    .build());
-                }catch (Exception e){
-
-                }
+                throw new UnavailableException(ErrorMessage.UNAUTHORIZED.getMessage());
             }
         } else {
             logger.error("---JWT Token: does not begin with Bearer String");

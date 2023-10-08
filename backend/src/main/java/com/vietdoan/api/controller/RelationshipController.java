@@ -1,9 +1,11 @@
 package com.vietdoan.api.controller;
 
+import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.constants.HttpStatusCode;
+import com.vietdoan.api.constants.SuccessMessage;
 import com.vietdoan.api.entities.User;
-import com.vietdoan.api.response.APIResponse;
-import com.vietdoan.api.response.ErrorResponse;
+import com.vietdoan.api.exception.NotFoundException;
+import com.vietdoan.api.response.ApiResponse;
 import com.vietdoan.api.service.RelationshipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,23 +21,13 @@ public class RelationshipController {
     private final RelationshipService service;
 
     @PostMapping("/friends")
-    public ResponseEntity doSVLst(@RequestAttribute("userInfo")User user, @RequestBody Map<String, String> json) {
+    public ResponseEntity<ApiResponse> doSVLst(@RequestAttribute("userInfo")User user, @RequestBody Map<String, String> json) {
         List<User> list = service.reqSVLst(user, json);
-        if (list == null || list.size() == 0) {
-            return ResponseEntity.ok(
-                    ErrorResponse
-                            .builder()
-                            .status(HttpStatusCode.BadRequest)
-                            .message("Lấy danh sách bạn bè không thành công")
-                            .build()
-            );
+        if (list == null || list.isEmpty()) {
+            throw new NotFoundException(ErrorMessage.GET_LIST_FAILED.getMessage());
         }
         return ResponseEntity.ok(
-                APIResponse
-                        .builder()
-                        .status(HttpStatusCode.Ok)
-                        .data(list)
-                        .build()
+                ApiResponse.success(HttpStatusCode.Ok, SuccessMessage.GET_LIST_SUCCESS.getMessage(), list)
         );
     }
 }

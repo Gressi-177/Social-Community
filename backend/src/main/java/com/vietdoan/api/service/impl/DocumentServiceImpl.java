@@ -1,11 +1,14 @@
 package com.vietdoan.api.service.impl;
 
+import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.entities.Upload;
+import com.vietdoan.api.exception.CustomIOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -44,14 +47,17 @@ public class DocumentServiceImpl implements com.vietdoan.api.service.DocumentSer
                     .build();
 
             return ent;
-        } catch (Exception e) {
-            return null;
+        } catch (IOException e) {
+            throw new CustomIOException(ErrorMessage.FAILED_TO_SAVE_FILE.getMessage());
         }
     }
 
     @Override
-    public Path load(String filename) {
+    public Path load(String filename) throws FileNotFoundException {
         Path file = root.resolve(filename);
+        if (!Files.exists(file)) {
+            throw new FileNotFoundException("File not found: " + filename);
+        }
         return file;
     }
 

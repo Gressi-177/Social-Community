@@ -1,29 +1,27 @@
 package com.vietdoan.api.controller;
 
+import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.constants.HttpStatusCode;
+import com.vietdoan.api.constants.SuccessMessage;
 import com.vietdoan.api.entities.Upload;
-import com.vietdoan.api.response.APIResponse;
+import com.vietdoan.api.exception.InternalServerErrorException;
+import com.vietdoan.api.response.ApiResponse;
 import com.vietdoan.api.service.DocumentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import java.io.File;
-import java.nio.file.Files;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,11 +31,10 @@ public class DocumentController {
     final DocumentService documentService;
 
     @PostMapping("/upload")
-    public ResponseEntity<APIResponse> uploadFiles(
+    public ResponseEntity uploadFiles(
             @RequestParam("files") MultipartFile[] files) {
-        try {
             Collection<Upload> rs = new ArrayList<>();
-
+        try {
             Arrays.asList(files).stream().forEach(file -> {
                 Upload ent = documentService.save(file);
                 rs.add(ent);
@@ -46,27 +43,20 @@ public class DocumentController {
             return ResponseEntity
                     .ok()
                     .body(
-                            APIResponse
-                                    .builder()
-                                    .status(HttpStatusCode.Ok)
-                                    .message("Upload ảnh thành công")
-                                    .data(rs)
-                                    .build()
+                            ApiResponse.success
+                                    (
+                                            HttpStatusCode.Ok,
+                                            SuccessMessage.UPLOAD_SUCCESS.getMessage(),
+                                            rs
+                                    )
                     );
-        } catch (Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.EXPECTATION_FAILED)
-                    .body(
-                            APIResponse
-                                    .builder()
-                                    .message(e.getMessage())
-                                    .build()
-                    );
+        } catch (Exception ex) {
+            throw new InternalServerErrorException(ErrorMessage.UPLOAD_FAILED.getMessage());
         }
     }
 
     @GetMapping("/files/{filename:.+}")
-    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) throws FileNotFoundException {
         Path     filePath = documentService.load(filename);
         Resource resource = new FileSystemResource(filePath);
         if (resource.exists()) {

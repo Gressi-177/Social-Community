@@ -3,14 +3,14 @@ package com.vietdoan.api.service;
 
 import com.vietdoan.api.request.AuthenticationRequest;
 import com.vietdoan.api.request.RegisterRequest;
-import com.vietdoan.api.response.APIResponse;
+import com.vietdoan.api.response.ApiResponse;
 
 public interface AuthenticationService {
 
-    APIResponse register(RegisterRequest request);
+    ApiResponse register(RegisterRequest request);
 
-    APIResponse authenticate(AuthenticationRequest request);
+    ApiResponse authenticate(AuthenticationRequest request);
 
-    APIResponse refreshToken(String refreshToken);
+    ApiResponse refreshToken(String refreshToken);
 
 }
