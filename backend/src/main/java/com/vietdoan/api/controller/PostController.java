@@ -73,4 +73,18 @@ public class PostController {
         );
     }
 
+    @GetMapping("/{postId}")
+    public ResponseEntity<ApiResponse> doGet(@PathVariable(name = "postId") Long postId){
+        PostDto ent = postService.reqGet(postId);
+        return ResponseEntity.ok(
+                ApiResponse
+                        .success
+                                (
+                                        HttpStatusCode.Ok,
+                                        SuccessMessage.ADD_SUCCESS.getMessage(),
+                                        ent
+                                )
+        );
+    }
+
 }

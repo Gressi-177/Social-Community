@@ -15,7 +15,8 @@ public enum ErrorMessage {
     UPLOAD_FAILED("File upload failed: An unexpected error occurred"),
     FAILED_TO_SAVE_FILE("Failed to save file"),
     ADD_FAILED("Add failed"),
-    GET_LIST_FAILED("Retrieving list failed");
+    GET_LIST_FAILED("Retrieving list failed"),
+    GET_FAILED("Get failed");
 
 
     private final String message;

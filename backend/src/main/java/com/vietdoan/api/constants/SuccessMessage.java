@@ -7,6 +7,7 @@ public enum SuccessMessage {
     DELETE_SUCCESS("Delete successful"),
     UPLOAD_SUCCESS("Upload successful"),
     ADD_SUCCESS("Add successful"),
+    GET_SUCCESS("Get successful"),
     GET_LIST_SUCCESS("Get list successfully");
 
     private final String message;

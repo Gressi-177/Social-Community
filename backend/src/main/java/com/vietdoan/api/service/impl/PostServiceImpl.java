@@ -1,9 +1,11 @@
 package com.vietdoan.api.service.impl;
 
+import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.dto.user.PostDto;
 import com.vietdoan.api.dto.user.UserDto;
 import com.vietdoan.api.entities.Post;
 import com.vietdoan.api.entities.User;
+import com.vietdoan.api.exception.NotFoundException;
 import com.vietdoan.api.repository.PostRepository;
 import com.vietdoan.api.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,6 +49,16 @@ public class PostServiceImpl implements PostService {
         PostDto rs = modelMapper.map(ent, PostDto.class);
         rs.setUser(modelMapper.map(user, UserDto.class));
         return rs;
+    }
+
+    @Override
+    public PostDto reqGet(Long id) {
+        Optional<Post> postOptional = postRepository.findById(id);
+        if(postOptional.isEmpty()){
+            throw new NotFoundException(ErrorMessage.GET_FAILED.getMessage());
+        }
+        PostDto ent = modelMapper.map(postOptional.get(), PostDto.class);
+        return ent;
     }
 
 }

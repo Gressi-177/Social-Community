@@ -9,4 +9,7 @@ public interface PostService {
     Page<PostDto> reqSVLst(User user,Integer pageNo, Integer pageSize, String sortBy);
     PostDto reqNew(User user, Post post);
 
+    PostDto reqGet(Long id);
+
+
 }
