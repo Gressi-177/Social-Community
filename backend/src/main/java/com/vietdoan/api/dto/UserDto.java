@@ -1,4 +1,4 @@
-package com.vietdoan.api.dto.user;
+package com.vietdoan.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

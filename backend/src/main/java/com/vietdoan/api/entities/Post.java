@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Data
@@ -34,6 +35,9 @@ public class Post {
     @JoinColumn(name = "user_id")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User user;
+
+    @OneToMany(mappedBy = "post")
+    private Collection<Comment> comments;
 
     @Column(name = "imgUrl")
     private String imgUrl;

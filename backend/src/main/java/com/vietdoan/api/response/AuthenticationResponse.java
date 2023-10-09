@@ -1,7 +1,7 @@
 package com.vietdoan.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.vietdoan.api.dto.user.UserDto;
+import com.vietdoan.api.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

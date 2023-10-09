@@ -3,9 +3,10 @@ package com.vietdoan.api.service.impl;
 import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.constants.SuccessMessage;
-import com.vietdoan.api.dto.user.UserDto;
+import com.vietdoan.api.dto.UserDto;
 import com.vietdoan.api.entities.Role;
 import com.vietdoan.api.entities.User;
+import com.vietdoan.api.exception.BadRequestException;
 import com.vietdoan.api.exception.InternalServerErrorException;
 import com.vietdoan.api.exception.NotFoundException;
 import com.vietdoan.api.exception.UnauthorizedException;
@@ -49,8 +50,7 @@ public class AuthenticationServiceImpl implements com.vietdoan.api.service.Authe
                 .build();
 
         if (userRepository.existsByUsername(user.getUsername())) {
-            return ApiResponse
-                    .error(HttpStatusCode.BadRequest, ErrorMessage.ACCOUNT_EXISTS.getMessage());
+            throw new BadRequestException(ErrorMessage.ACCOUNT_EXISTS.getMessage());
         }
         User savedUser = userRepository.save(user);
 

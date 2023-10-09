@@ -80,6 +80,9 @@ public class User implements UserDetails {
     @JsonIgnore
     private Collection<Post> posts;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Collection<Comment> comments;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
