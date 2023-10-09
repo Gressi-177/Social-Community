@@ -2,7 +2,6 @@ package com.vietdoan.api.controller;
 
 import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.constants.SuccessMessage;
-import com.vietdoan.api.dto.PostDto;
 import com.vietdoan.api.dto.UserDto;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.response.ApiResponse;

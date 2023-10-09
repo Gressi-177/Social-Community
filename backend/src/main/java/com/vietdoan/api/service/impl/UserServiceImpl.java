@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
         if (userOptional.isEmpty())
             throw new NotFoundException(ErrorMessage.NOT_FOUND.getMessage());
 
-        UserDto ent = modelMapper.map(userOptional.get(), UserDto.class);
-        return ent;
+        return modelMapper.map(userOptional.get(), UserDto.class);
     }
 }
