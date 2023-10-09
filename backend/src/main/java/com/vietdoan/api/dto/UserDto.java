@@ -23,6 +23,8 @@ public class UserDto {
 
     private String username;
 
+    private String imgUrl;
+
     /* New */
     @JsonProperty("created_at")
     private Date date02;

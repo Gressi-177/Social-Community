@@ -56,6 +56,9 @@ public class User implements UserDetails {
     @JsonProperty("email")
     private String email;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
     /* Birth Date */
     @Column(name = "date_01")
     @JsonProperty("birth_date")
