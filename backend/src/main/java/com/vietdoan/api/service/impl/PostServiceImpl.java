@@ -56,8 +56,7 @@ public class PostServiceImpl implements PostService {
         if(postOptional.isEmpty()){
             throw new NotFoundException(ErrorMessage.GET_FAILED.getMessage());
         }
-        PostDto ent = modelMapper.map(postOptional.get(), PostDto.class);
-        return ent;
+        return modelMapper.map(postOptional.get(), PostDto.class);
     }
 
 }

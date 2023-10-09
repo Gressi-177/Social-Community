@@ -2,12 +2,9 @@ package com.vietdoan.api.service.impl;
 
 import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.dto.CommentDto;
-import com.vietdoan.api.dto.PostDto;
 import com.vietdoan.api.entities.Comment;
-import com.vietdoan.api.entities.Post;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.exception.BadRequestException;
-import com.vietdoan.api.exception.NotFoundException;
 import com.vietdoan.api.repository.CommentRepository;
 import com.vietdoan.api.service.CommentService;
 import lombok.RequiredArgsConstructor;
