@@ -3,7 +3,7 @@ package com.vietdoan.api.controller;
 import com.vietdoan.api.constants.ErrorMessage;
 import com.vietdoan.api.constants.HttpStatusCode;
 import com.vietdoan.api.constants.SuccessMessage;
-import com.vietdoan.api.dto.user.PostDto;
+import com.vietdoan.api.dto.PostDto;
 import com.vietdoan.api.entities.Post;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.exception.NotFoundException;
@@ -25,7 +25,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/add")
-    public ResponseEntity<ApiResponse> doSvNew(
+    public ResponseEntity<ApiResponse> doNew(
             @RequestAttribute("userInfo")User user,
             @RequestBody Post post
     ){
@@ -33,7 +33,7 @@ public class PostController {
         PostDto ent = postService.reqNew(user, post);
 
         if (ent == null) {
-            throw new NotFoundException(ErrorMessage.UPLOAD_FAILED.getMessage());
+            throw new NotFoundException(ErrorMessage.ADD_FAILED.getMessage());
         }
         return ResponseEntity.ok(
                 ApiResponse
@@ -47,7 +47,7 @@ public class PostController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<ApiResponse> doSVLst(
+    public ResponseEntity<ApiResponse> doLst(
             @RequestAttribute("userInfo")User user,
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,

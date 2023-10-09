@@ -1,8 +1,8 @@
 package com.vietdoan.api.service.impl;
 
 import com.vietdoan.api.constants.ErrorMessage;
-import com.vietdoan.api.dto.user.PostDto;
-import com.vietdoan.api.dto.user.UserDto;
+import com.vietdoan.api.dto.PostDto;
+import com.vietdoan.api.dto.UserDto;
 import com.vietdoan.api.entities.Post;
 import com.vietdoan.api.entities.User;
 import com.vietdoan.api.exception.NotFoundException;
@@ -13,7 +13,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
