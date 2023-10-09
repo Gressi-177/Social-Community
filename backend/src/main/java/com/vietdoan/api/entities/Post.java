@@ -39,7 +39,7 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private Collection<Comment> comments;
 
-    @Column(name = "imgUrl")
+    @Column(name = "img_Url")
     private String imgUrl;
 
     @Column(name = "status_01")
