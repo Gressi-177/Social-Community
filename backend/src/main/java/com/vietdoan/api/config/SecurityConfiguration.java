@@ -1,6 +1,7 @@
 package com.vietdoan.api.config;
 
 import com.vietdoan.api.entities.Role;
+import com.vietdoan.api.exception.AuthException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,18 +19,21 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthFilter;
+    private final AuthException authException;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/api/v1/auth/**")
+                        .requestMatchers("/api/v1/**")
                         .permitAll()
                         .requestMatchers("/api/v1/management/**")
                         .hasRole(Role.ADMIN.name())
                         .anyRequest()
                         .authenticated()
                 )
+                .exceptionHandling(e->e.authenticationEntryPoint(authException))
                 .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

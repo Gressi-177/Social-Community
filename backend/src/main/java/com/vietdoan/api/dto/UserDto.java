@@ -1,29 +1,29 @@
-package com.vietdoan.api.dto.user;
+package com.vietdoan.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.vietdoan.api.entities.Role;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserAuthDto {
 
-    @JsonProperty("_id")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto {
+
     private Long id;
 
-    @JsonProperty("status")
     private Integer status;
 
-    @JsonProperty("role")
     private String role;
 
-    @JsonProperty("username")
     private String username;
+
+    private String imgUrl;
 
     /* New */
     @JsonProperty("created_at")

@@ -15,27 +15,38 @@ import java.util.Date;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "Parent")
+    @JoinColumn(name = "parent_id")
     private Comment parent;
 
     @ManyToOne
-    @JoinColumn(name = "User")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "Post")
+    @JoinColumn(name = "post_id")
     private Post post;
 
-    @Column(name = "Content", columnDefinition = "TEXT")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "Date_01")
+    @Column(name = "date_01")
     private Date date01;
 
-    @Column(name = "Date_02")
+    @Column(name = "date_02")
     private Date date02;
+
+    @PrePersist
+    protected void prePersist() {
+        this.date01 = new Date(System.currentTimeMillis());
+        this.date02 = new Date(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.date02 = new Date(System.currentTimeMillis());
+    }
 }

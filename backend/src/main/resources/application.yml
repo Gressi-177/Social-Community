@@ -7,13 +7,20 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 800MB
+      max-request-size: 800MB
+      resolve-lazily: true
 
 application:
   security:
@@ -22,3 +29,7 @@ application:
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
+
+ngrok:
+  enabled: true
+  authToken: 2WNSsrzDPJrWOZehCC4dcb3WuuX_aFdpfe3Jp8mgRKiXgK2r

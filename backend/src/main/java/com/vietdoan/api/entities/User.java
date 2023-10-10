@@ -31,11 +31,11 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "id")
     @JsonProperty("_id")
     private Long id;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     @JsonProperty("status")
     private Integer status;
 
@@ -44,37 +44,47 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Column(name = "Username", length = 100)
+    @Column(name = "username", length = 100, unique = true)
     @JsonProperty("username")
     private String username;
 
-    @Column(name = "Password", length = 1000)
+    @Column(name = "password", length = 1000)
     @JsonIgnore
     private String password;
 
-    @Column(name = "Email", length = 50)
+    @Column(name = "email", length = 50)
     @JsonProperty("email")
     private String email;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
     /* Birth Date */
-    @Column(name = "Date_01")
+    @Column(name = "date_01")
     @JsonProperty("birth_date")
     private Date date01;
 
     /* New */
-    @Column(name = "Date_02")
+    @Column(name = "date_02")
     @JsonProperty("created_at")
     private Date date02;
 
     /* Mod */
-    @Column(name = "Date_03")
+    @Column(name = "date_03")
     @JsonProperty("updated_at")
     private Date date03;
 
     /* Last login */
-    @Column(name = "Date_04")
+    @Column(name = "date_04")
     @JsonProperty("login_at")
     private Date date04;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private Collection<Post> posts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Collection<Comment> comments;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
