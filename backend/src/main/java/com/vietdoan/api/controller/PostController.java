@@ -48,12 +48,11 @@ public class PostController {
 
     @GetMapping("/list")
     public ResponseEntity<ApiResponse> doLst(
-            @RequestAttribute("userInfo")User user,
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "date01") String sortBy
             ){
-        Page<PostDto> rs = postService.reqSVLst(user, pageNo, pageSize, sortBy);
+        Page<PostDto> rs = postService.reqSVLst(null, pageNo, pageSize, sortBy);
         if (rs == null || rs.isEmpty()) {
             throw new NotFoundException(ErrorMessage.GET_LIST_FAILED.getMessage());
         }

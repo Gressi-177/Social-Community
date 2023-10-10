@@ -30,7 +30,7 @@ public class PostServiceImpl implements PostService {
 
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.DESC, sortBy));
 
-        Page<Post> pagedResult = postRepository.findPostsByUserId(user.getId(), paging);
+        Page<Post> pagedResult = postRepository.findAll(paging);
 
         List<PostDto> postDtos = pagedResult.getContent()
                 .stream()
