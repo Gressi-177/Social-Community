@@ -22,7 +22,7 @@ function Post(props: PostProps) {
           <div className='relative flex'>
             <div className='pr-2'>
               <span className='notification-badge absolute top-[-4px] left-[-6px] w-4 h-4 bg-green-400 rounded-full flex items-center justify-center font-semibold'></span>
-              <img src={profileImage} alt='' />
+              <img className='w-16 h-16 rounded-xl' src={profileImage} alt='' />
             </div>
             <div className='flex flex-col justify-between'>
               <h3 className='font-bold text-white text-lg'>{name}</h3>
