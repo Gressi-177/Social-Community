@@ -3,7 +3,7 @@ import { faBell, faFileLines, faFilm, faHome, faMessage, faUsers } from '@fortaw
 import { Link } from 'react-router-dom'
 function Header() {
   return (
-    <header className=' p-3 border border-solid bg-primary fixed top-0 right-0 left-0 z-30'>
+    <header className=' p-3 border-non bg-primary fixed top-0 right-0 left-0 z-30'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <Link to='/'>
