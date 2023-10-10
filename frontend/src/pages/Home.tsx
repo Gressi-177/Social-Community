@@ -1,33 +1,80 @@
-import Post from 'components/Post'
-import WritePost from 'components/WritePost'
-import DefaultLayout from 'layouts/DefaultLayout'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Post from 'components/Post';
+import WritePost from 'components/WritePost';
+import DefaultLayout from 'layouts/DefaultLayout';
 
-function Home() {
-  return (
-    <DefaultLayout>
-      <main className=' w-[47%] mt-24 mx-5'>
-        <WritePost />
-        <Post
-          profileImage='https://pixner.net/circlehub/main/assets/images/avatar-1.png'
-          name='Bao Linh'
-          username='@baolinhdev'
-          postContent='I created Roughly plugin to sketch crafted hand-drawn elements which can be used to any usage (diagrams/flows/decoration/etc).'
-          postImage='https://pixner.net/circlehub/main/assets/images/post-img-1.png'
-          commentCount={8}
-          shareCount={20}
-        />
-        <Post
-          profileImage='https://pixner.net/circlehub/main/assets/images/avatar-2.png'
-          name='Viet Doan'
-          username='@vietdoan'
-          postContent='I created Roughly plugin to sketch crafted hand-drawn elements which can be used to any usage (diagrams/flows/decoration/etc).'
-          postImage='https://pixner.net/circlehub/main/assets/images/post-img-1.png'
-          commentCount={5}
-          shareCount={3}
-        />
-      </main>
-    </DefaultLayout>
-  )
+interface PostData {
+  id: number;
+  user: {
+    id: number;
+    status: number;
+    role: string;
+    username: string;
+    imgUrl: string;
+    created_at: string;
+    updated_at: string;
+  };
+  imgUrl: string;
+  status01: number;
+  content01: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export default Home
+function Home() {
+  const baseURL = process.env.REACT_APP_BASE_URL; // Replace with your base URL 
+  const accessControlOrigin = process.env.REACT_APP_ACCESS_CONTROL_ORIGIN 
+  
+  const [posts, setPosts] = useState<PostData[] | null>(null);
+  console.log(baseURL);
+  
+  useEffect(() => {
+
+    
+    const axiosInstance = axios.create({
+      baseURL,
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': true,
+        'Access-Control-Allow-Origin': accessControlOrigin,
+      },
+    });
+
+    const fetchPost = async () => {
+      try {
+        const response = await axiosInstance.get<any>('/api/v1/post/list?page=0&limit=10&sortBy=date01');
+        const data = response.data.data.posts; 
+        console.log("data", data);
+        
+        setPosts(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchPost();
+  }, []);
+
+  return ( 
+    <DefaultLayout>
+      <main className='w-[47%] mt-24 mx-5'>
+        <WritePost />
+        {posts && posts.map((item) => (
+  <Post
+    key={item.id}
+    profileImage={`${baseURL}/api/v1/files/${item.user.imgUrl}`}
+    name={item.user?.username}
+    username={`@${item.user?.username}`}
+    postContent={item.content01}
+    postImage={`${baseURL}/api/v1/files/${item.imgUrl}`}
+    commentCount={0}
+    shareCount={0}
+  />
+))}
+      </main>
+    </DefaultLayout>
+  );
+}
+
+export default Home;
