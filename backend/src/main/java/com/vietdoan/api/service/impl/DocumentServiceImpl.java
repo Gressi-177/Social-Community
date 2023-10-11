@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 @Service
 @RequiredArgsConstructor
 public class DocumentServiceImpl implements com.vietdoan.api.service.DocumentService {
-    private final String uploadDir = "D:\\uploads";
+    private final String uploadDir = "uploads";
     private final Path   root      = Paths.get(uploadDir);
 
     @Override
