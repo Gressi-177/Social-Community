@@ -24,8 +24,7 @@ interface PostData {
 
 function Home() {
   const baseURL = process.env.REACT_APP_BASE_URL; // Replace with your base URL 
-  const accessControlOrigin = process.env.REACT_APP_ACCESS_CONTROL_ORIGIN 
-  
+
   const [posts, setPosts] = useState<PostData[] | null>(null);
   console.log(baseURL);
   
@@ -36,10 +35,10 @@ function Home() {
       baseURL,
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': true,
-        'Access-Control-Allow-Origin': accessControlOrigin,
       },
     });
+
+    console.log(baseURL);
 
     const fetchPost = async () => {
       try {
