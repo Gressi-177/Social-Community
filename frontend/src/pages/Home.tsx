@@ -51,7 +51,7 @@ function Home() {
     }
 
     fetchPost()
-  }, [[accessControlOrigin, baseURL]])
+  }, [[baseURL]])
 
   return (
     <DefaultLayout>
