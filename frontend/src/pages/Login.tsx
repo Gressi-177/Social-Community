@@ -13,7 +13,7 @@ function Login() {
           </div>
 
           <div className='title my-16'>
-            <h3 className='font-bold text-2xl capitalize text-center'>Welcome!</h3>
+            <h3 className='font-bold text-2xl capitalize text-center'>Log in</h3>
           </div>
           <form className='px-40'>
             <input
@@ -39,7 +39,7 @@ function Login() {
             </button>
             <div className='mt-2 w-full text-center'>
               <Link to='forgot-pass' className='italic underline '>
-                Forgot password
+                Forgot password ???
               </Link>
             </div>
             <div className='flex justify-between mt-2'>
