@@ -10,51 +10,50 @@ import {
   faUsers
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom' 
-import React, { useState, useEffect } from 'react'; 
-import axios from 'axios'; 
+import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 interface ProfileData {
-  id: number;
-  status: number;
-  role: string;
-  username: string;
-  created_at: string;
-  updated_at: string;
+  id: number
+  status: number
+  role: string
+  username: string
+  created_at: string
+  updated_at: string
 }
 
-function NavSidebar() { 
-  const baseURL = process.env.REACT_APP_BASE_URL; // Replace with your base URL 
-  const accessControlOrigin = process.env.REACT_APP_ACCESS_CONTROL_ORIGIN  
-  
-  const [profile, setProfile] = useState<ProfileData | null>(null); // Khởi tạo là null
-  
+function NavSidebar() {
+  const baseURL = process.env.REACT_APP_BASE_URL // Replace with your base URL
+  const accessControlOrigin = process.env.REACT_APP_ACCESS_CONTROL_ORIGIN
+
+  const [profile, setProfile] = useState<ProfileData | null>(null) // Khởi tạo là null
+
   useEffect(() => {
     const axiosInstance = axios.create({
       baseURL,
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': true,
-        'Access-Control-Allow-Origin': accessControlOrigin, 
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0yIiwiaWF0IjoxNjk2OTQ1Mjc4LCJleHAiOjE2OTcwMzE2Nzh9.jEXssWei3uv7L-vc8maH7dwmN775acIGkac9L_NpVYk`
-      },
-    });
+        'Access-Control-Allow-Origin': accessControlOrigin,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0yIiwiaWF0IjoxNjk2OTQ1Mjc4LCJleHAiOjE2OTcwMzE2Nzh9.jEXssWei3uv7L-vc8maH7dwmN775acIGkac9L_NpVYk`
+      }
+    })
 
     const fetchProfile = async () => {
       try {
-        const response = await axiosInstance.get<any>('/api/v1/profile');
-        const data = response.data.data; 
-        console.log("data", data);
-        
-        setProfile(data); // Đặt giá trị profile từ dữ liệu API
+        const response = await axiosInstance.get<any>('/api/v1/profile')
+        const data = response.data.data
+        console.log('data', data)
 
+        setProfile(data) // Đặt giá trị profile từ dữ liệu API
       } catch (err) {
-        console.error(err);
+        console.error(err)
       }
-    };
+    }
 
-    fetchProfile();
-  }, []);
+    fetchProfile()
+  }, [accessControlOrigin, baseURL])
 
   return (
     <div>
@@ -68,7 +67,6 @@ function NavSidebar() {
             <div className='flex flex-col justify-between'>
               <h3 className='font-semibold text-white text-lg'>{profile?.username}</h3>
               <p className='font-medium text-white text-sm'>@{profile?.username}</p>
-
             </div>
           </div>
         </div>
