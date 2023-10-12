@@ -8,6 +8,7 @@ import {
   faMessage,
   faRightFromBracket,
   faRightToBracket,
+  faUserPlus,
   faUsers
 } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
@@ -98,20 +99,46 @@ function Header() {
                 <ul>
                   <li className='py-2 border-gray-700  border-b'>
                     <Link to='profile-edit.html' className='flex items-center group'>
-                      <FontAwesomeIcon icon={faGear} className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500' />
-                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>Settings & Privacy</p>
+                      <FontAwesomeIcon
+                        icon={faGear}
+                        className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500'
+                      />
+                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>
+                        Settings & Privacy
+                      </p>
                     </Link>
                   </li>
                   <li className='py-2 border-gray-700  border-b'>
-                    <Link to='profile-edit.html' className='flex items-center group'>
-                      <FontAwesomeIcon icon={faRightToBracket} className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500' />
-                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>Sign in</p>
+                    <Link to='/sign-in' className='flex items-center group'>
+                      <FontAwesomeIcon
+                        icon={faRightToBracket}
+                        className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500'
+                      />
+                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>
+                        Sign in
+                      </p>
+                    </Link>
+                  </li>
+                  <li className='py-2 border-gray-700  border-b'>
+                    <Link to='/register' className='flex items-center group'>
+                      <FontAwesomeIcon
+                        icon={faUserPlus}
+                        className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500'
+                      />
+                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>
+                        Register
+                      </p>
                     </Link>
                   </li>
                   <li className='py-2'>
-                    <Link to='profile-edit.html' className='flex items-center group'>
-                      <FontAwesomeIcon icon={faRightFromBracket} className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500' />
-                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>Sign out</p>
+                    <Link to='/sign-out' className='flex items-center group'>
+                      <FontAwesomeIcon
+                        icon={faRightFromBracket}
+                        className='mr-2 text-xl transition-colors duration-300 group-hover:text-blue-500'
+                      />
+                      <p className='text-lg font-medium transition-colors duration-300 group-hover:text-blue-500'>
+                        Sign out
+                      </p>
                     </Link>
                   </li>
                 </ul>
