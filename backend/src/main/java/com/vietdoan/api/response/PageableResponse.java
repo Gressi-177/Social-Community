@@ -10,6 +10,5 @@ import java.util.Collection;
 public class PageableResponse{
     private Integer page;
     private Integer limit;
-
-    private Integer pageSize;
+    private Integer page_size;
 }

@@ -1,18 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import routes from 'routes/routes'
+import { ToastContainer } from 'react-toastify'
+import useRouteElements from './useRouteElements'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
+  const routeElements = useRouteElements()
   return (
-    <Router>
-      <div>
-        <Routes>
-          {routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
-          ))}
-        </Routes>
-      </div>
-    </Router>
+    <div>
+      {routeElements}
+      <ToastContainer />
+    </div>
   )
 }
-
 export default App

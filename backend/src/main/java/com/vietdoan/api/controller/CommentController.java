@@ -45,7 +45,6 @@ public class CommentController {
         );
 
     }
-
     @GetMapping("/list")
     public ResponseEntity<ApiResponse> doLst(
             @RequestParam Long postId,
@@ -61,7 +60,7 @@ public class CommentController {
                 .builder()
                 .page(rs.getNumber() + 1)
                 .limit(rs.getSize())
-                .pageSize(rs.getTotalPages())
+                .page_size(rs.getTotalPages())
                 .build();
 
         Map<String, Object> data = new HashMap<>();
